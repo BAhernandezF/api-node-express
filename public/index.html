@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Gabi eri entero pao</h1>
+
+    <table id="table" role="grid">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Fecha Creado</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+
+        </tbody>
+    <script>
+        const funcionPrueba = async () => {
+            const obtiene = () => {
+                return fetch(`http://localhost:8080/api/clientes/`)
+                    .then(res => res.json())
+                    .catch(err => console.error(err))
+            }
+
+            const _result = document.querySelector("#resultado")
+            let sel = document.querySelector('#table-body');
+
+            const datos = await obtiene()
+
+            if(datos){
+                datos.forEach(datos => {
+                    sel.innerHTML +=`
+                    <tr>
+                        <td>${datos.id}</td>
+                        <td>${datos.nombre}</td>
+                        <td>${datos.apellido}</td>
+                        <td>${datos.fechaCreacion}</td>
+                    </tr>`
+                });
+            }
+
+        }
+
+        funcionPrueba();
+
+    </script>
+</body>
+
+</html>

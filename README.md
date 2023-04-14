@@ -1,0 +1,1 @@
+Un proyecto personal basado en la aquitectura de Node.js y utilizando express para realizar una API rest, utilizando Mysql y virtual  enviroment
