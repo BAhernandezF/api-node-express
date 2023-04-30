@@ -1,4 +1,6 @@
 const db = require('../utils/database');
+const bcrypt = require('bcrypt');
+
 
 
 module.exports = class User {
@@ -11,23 +13,31 @@ module.exports = class User {
 
     static async buscar(email){
         const [rows] = await db.query("SELECT * FROM users where email = ?;", [email])
+
         return rows;
     }
 
     static async guardar(user){
 
-        //hashear password
+        //hashea contraseña
+        const hashedpassword = this.hashPass(user.password);
+        console.log(hashedpassword);
 
         const [rows] = await db.query(
             'INSERT INTO users (nombre, email, password) VALUES (?, ?, ?)',
-            [user.nombre, user.email, user.password]
+            [user.nombre, user.email, hashedpassword]
         );
 
         return rows;
         
     }
 
-    //static hashPass()
+    static hashPass(password){
+        password =  bcrypt.hashSync(password, 10);
+        return password;
+
+    }
+
 
 
 };

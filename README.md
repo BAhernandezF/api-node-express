@@ -10,8 +10,8 @@ los endpoints creados de momento son:
 
 ***Auth***
 
-*/api/usuarios/registro (faltan funcionalidades, y falta ir mejorando)
-*/api/usuarios/registro (no implementado)
+*/api/usuarios/registro (implementado, falta ir mejorando)
+*/api/usuarios/login (implementado, falta ir mejorando)
 
 ***JWT***
 implementando, no funcional

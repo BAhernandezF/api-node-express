@@ -12,11 +12,12 @@ const {
 routerUser.post('/registro',validarRegistro(), registrar); //registro de usuarios
 routerUser.post('/login', autenticar); //login de usuarios
 
+
+
+
+
+
 //funciones
-
-
-
-
 function validarRegistro() {
     return nombreVal =[
         body('nombre')

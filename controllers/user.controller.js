@@ -1,15 +1,39 @@
 const { json } = require('body-parser');
 const { response } = require('express');
 const {body, validationResult} = require('express-validator');
+const bcrypt = require('bcrypt');
+
 
 
 const User = require('../models/user');
 
 const autenticar = async (req, res, next) => {
+
+    const { email, password } = req.body;
+
         
+    const existeUsuario = await User.buscar(email)
+    const usuarioEncontrado = existeUsuario[0];
+
+    if (existeUsuario.length == 0) {
+        const error = new Error('Usuario o contraseña incorrecta');
+        return res.status(400).json({msg: error.message});
+    }
+
+    const passwordValido = bcrypt.compareSync(password, usuarioEncontrado.password);
+
+    if (!passwordValido) {
+        const error = new Error('Usuario o contraseña incorrecta');
+        return res.status(400).json({msg: error.message});
+    }
+
     res.status(200).json({
-        msg:'autenticado'
+        msg:'Usuario logeado correctamente',
+        nombre: usuarioEncontrado.nombre,
+        email: usuarioEncontrado.email,
+
     });
+
 
 };
 

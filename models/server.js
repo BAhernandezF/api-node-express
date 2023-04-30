@@ -12,7 +12,7 @@ class Server {
         this.port = process.env.PORT;
         this.clientesRutas = '/api/clientes';
         this.authRutas = '/api/usuarios';
-        this.webClienteRutas = '/web/home';
+
         //middlewares
         this.middlewares();
         //rutas
@@ -36,7 +36,7 @@ class Server {
 
         this.app.use(this.clientesRutas, require('../routes/clientes.routes'));
         this.app.use(this.authRutas, require('../routes/auth.routes'));
-        this.app.use(this.webClienteRutas, require('../routes/webCliente.routes'));
+
 
         this.app.all('*', (req, res, next)=>{
             const err = new Error(`la URL ${req.path} no fue encontrada`);
