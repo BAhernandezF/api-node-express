@@ -1,6 +1,6 @@
 Un proyecto personal basado en la aquitectura de Node.js y utilizando express para realizar una API rest, utilizando Mysql y virtual  enviroment
 
-los endpoints creados de momento son:
+los endpoints creados de momento son: <br />
 ***Clientes***
 */api/clientes/ (implementado, revisar cosdigo para tener referencia)
 */api/clientes/1 (implementado, revisar cosdigo para tener referencia)
