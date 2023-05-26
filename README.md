@@ -10,8 +10,10 @@ los endpoints creados de momento son: <br />
 
 ***Auth*** <br />
 
-*/api/usuarios/registro (implementado, falta ir mejorando) <br />
+*/api/usuarios/registro (implementado) con middleware para verificar campos vacios<br />
 */api/usuarios/login (implementado, falta ir mejorando) <br />
+*/api/usuarios/pruebauser (implementado, para testear el middleware de verificacion jwt) <br />
+*/api/usuarios/perfil/:id (implementado, pero sin funcion completa, utiliza auth jwt y devuelve usuarios de bd mysql) <br />
 
 ***JWT*** <br />
-implementando, no funcional <br />
+implementando funcional<br />
