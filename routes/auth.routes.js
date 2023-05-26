@@ -7,10 +7,20 @@ const routerUser = Router();
 const {
     autenticar,
     registrar,
+    pruebaUsuario,
+    perfil
 } = require('../controllers/user.controller');
+const auth = require('../middleware/verificacion')
 
-routerUser.post('/registro',validarRegistro(), registrar); //registro de usuarios
-routerUser.post('/login', autenticar); //login de usuarios
+//prueba de usuarios
+routerUser.get('/pruebauser', auth.verificacion ,pruebaUsuario); 
+//registro de usuarios
+routerUser.post('/registro',validarRegistro(), registrar);
+//login de usuarios
+routerUser.post('/login', autenticar);
+//perfil de usuario
+routerUser.get('/perfil/:id', auth.verificacion ,perfil); 
+
 
 
 

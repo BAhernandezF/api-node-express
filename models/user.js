@@ -8,6 +8,7 @@ module.exports = class User {
         this.nombre = nombre;
         this.email = email;
         this.password = password;
+        this.rol = rol;
     }
     
 
@@ -25,7 +26,7 @@ module.exports = class User {
 
         const [rows] = await db.query(
             'INSERT INTO users (nombre, email, password) VALUES (?, ?, ?)',
-            [user.nombre, user.email, hashedpassword]
+            [user.nombre, user.email, hashedpassword, user.rol]
         );
 
         return rows;
@@ -37,6 +38,13 @@ module.exports = class User {
         return password;
 
     }
+
+    static async buscarPorId(id){
+        const [rows] = await db.query("SELECT id, nombre, email FROM users where id = ?;", [id])
+
+        return rows;
+    }
+
 
 
 
